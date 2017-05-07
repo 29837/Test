@@ -13,6 +13,7 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // This method Enable Attribute Routing
             routes.MapMvcAttributeRoutes();
 
             //routes.MapRoute(
