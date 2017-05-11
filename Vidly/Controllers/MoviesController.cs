@@ -5,11 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+       
         // GET: Movies/Random
         public ActionResult Random()
         {
@@ -31,24 +39,24 @@ namespace Vidly.Controllers
         }
 
 
-        //movies
+        //Get: movies
         public ActionResult Index()
         {
-            var movies = new List<Movie>
-            {
-                //new Movie { Name  = "Shrek"},
-                //new Movie { Name  = "Wall-e"}
-            };
-
-            var viewModel = new MoviesViewModel
-            {
-                Movies = movies
-            };
-
-            return View(viewModel);
+            var movies = _context.Movies.Include(c => c.Gender).ToList();
+            return View(movies);
         }
 
+        //Get: movies/details/{id}
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(g => g.Gender).SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound("The movie was not found in the database");
+            return View(movie);
+        }
 
+        /****Good to know*****
+        // 
         //public ActionResult Edit(int id)
         //{
         //       return Content("Id: " + id);
@@ -71,5 +79,6 @@ namespace Vidly.Controllers
         //{
         //    return Content(year + "/" + month);
         //}
+         * */
     }
 }
