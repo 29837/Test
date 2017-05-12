@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
 
 namespace Vidly.Controllers
 {
@@ -17,7 +19,83 @@ namespace Vidly.Controllers
         {
             _context = new ApplicationDbContext();
         }
-       
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        //Get: movies/new/
+        public ActionResult New()
+        {
+            var genres = _context.Genre.ToList();
+            var viewModel = new MovieFormViewModel {
+                Genres = genres                
+            };
+            return View("MoviesForm", viewModel);
+        }
+
+        //Get: movies/Save/{movie}
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+           // if (movie.Id == 0)
+                _context.Movies.Add(movie);
+            //else
+            //{
+            //    var movieInDb = _context.Movies.Single(c => c.Id == movie.Id);
+            //    movieInDb.Name = movie.Name;
+            //    movieInDb.ReleaseDate = movie.ReleaseDate;
+            //    movieInDb.GenderId = movie.GenderId;
+            //    movieInDb.NumberInStock = movie.NumberInStock;
+            //}
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return RedirectToAction("Index", "Movies");
+        }
+
+        //Get: movies
+        public ActionResult Index()
+        {
+            var movies = _context.Movies.Include(c => c.Gender).ToList();
+            return View(movies);
+        }
+
+        //Get: movies/details/{id}
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(g => g.Gender).SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound("The movie was not found in the database");
+            return View(movie);
+        }
+
+        //Get: movies/edit/{id}
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genre.ToList()
+            };
+            return View("MoviesForm", viewModel);
+        }
+
+
         // GET: Movies/Random
         public ActionResult Random()
         {
@@ -36,23 +114,6 @@ namespace Vidly.Controllers
             };
 
             return View(viewModel);
-        }
-
-
-        //Get: movies
-        public ActionResult Index()
-        {
-            var movies = _context.Movies.Include(c => c.Gender).ToList();
-            return View(movies);
-        }
-
-        //Get: movies/details/{id}
-        public ActionResult Details(int id)
-        {
-            var movie = _context.Movies.Include(g => g.Gender).SingleOrDefault(m => m.Id == id);
-            if (movie == null)
-                return HttpNotFound("The movie was not found in the database");
-            return View(movie);
         }
 
         /****Good to know*****

@@ -215,6 +215,62 @@
     <Compile Include="Migrations\201705111845249_UpdateMembershipTypeTable.Designer.cs">
       <DependentUpon>201705111845249_UpdateMembershipTypeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705120013090_removeGenreFromMovieTable.cs" />
+    <Compile Include="Migrations\201705120013090_removeGenreFromMovieTable.Designer.cs">
+      <DependentUpon>201705120013090_removeGenreFromMovieTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121438028_deleteGenreTable.cs" />
+    <Compile Include="Migrations\201705121438028_deleteGenreTable.Designer.cs">
+      <DependentUpon>201705121438028_deleteGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121447538_RebuildGenreTable.cs" />
+    <Compile Include="Migrations\201705121447538_RebuildGenreTable.Designer.cs">
+      <DependentUpon>201705121447538_RebuildGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121516496_updateMoviesT.cs" />
+    <Compile Include="Migrations\201705121516496_updateMoviesT.Designer.cs">
+      <DependentUpon>201705121516496_updateMoviesT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121517599_RemoveGenres.cs" />
+    <Compile Include="Migrations\201705121517599_RemoveGenres.Designer.cs">
+      <DependentUpon>201705121517599_RemoveGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121524462_CreateGenreTable.cs" />
+    <Compile Include="Migrations\201705121524462_CreateGenreTable.Designer.cs">
+      <DependentUpon>201705121524462_CreateGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121526325_deleteGenreTable1.cs" />
+    <Compile Include="Migrations\201705121526325_deleteGenreTable1.Designer.cs">
+      <DependentUpon>201705121526325_deleteGenreTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121527355_CreateGenreTable1.cs" />
+    <Compile Include="Migrations\201705121527355_CreateGenreTable1.Designer.cs">
+      <DependentUpon>201705121527355_CreateGenreTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121529081_UpdateMoviesTable.cs" />
+    <Compile Include="Migrations\201705121529081_UpdateMoviesTable.Designer.cs">
+      <DependentUpon>201705121529081_UpdateMoviesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121654463_ChangeDateTimePropertiesInMoviesTable.cs" />
+    <Compile Include="Migrations\201705121654463_ChangeDateTimePropertiesInMoviesTable.Designer.cs">
+      <DependentUpon>201705121654463_ChangeDateTimePropertiesInMoviesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121800334_ChangeGenderIdOfMoviesModel.cs" />
+    <Compile Include="Migrations\201705121800334_ChangeGenderIdOfMoviesModel.Designer.cs">
+      <DependentUpon>201705121800334_ChangeGenderIdOfMoviesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121926087_ChangeGenderIdOfMoviesModel2.cs" />
+    <Compile Include="Migrations\201705121926087_ChangeGenderIdOfMoviesModel2.Designer.cs">
+      <DependentUpon>201705121926087_ChangeGenderIdOfMoviesModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705121942218_ChangeGenderIdOfMoviesModel3.cs" />
+    <Compile Include="Migrations\201705121942218_ChangeGenderIdOfMoviesModel3.Designer.cs">
+      <DependentUpon>201705121942218_ChangeGenderIdOfMoviesModel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705122016128_modifyGenderOfMovies.cs" />
+    <Compile Include="Migrations\201705122016128_modifyGenderOfMovies.Designer.cs">
+      <DependentUpon>201705122016128_modifyGenderOfMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -222,12 +278,14 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomersViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\NewMovieViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +354,7 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MoviesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -344,6 +403,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705111845249_UpdateMembershipTypeTable.resx">
       <DependentUpon>201705111845249_UpdateMembershipTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705120013090_removeGenreFromMovieTable.resx">
+      <DependentUpon>201705120013090_removeGenreFromMovieTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121438028_deleteGenreTable.resx">
+      <DependentUpon>201705121438028_deleteGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121447538_RebuildGenreTable.resx">
+      <DependentUpon>201705121447538_RebuildGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121516496_updateMoviesT.resx">
+      <DependentUpon>201705121516496_updateMoviesT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121517599_RemoveGenres.resx">
+      <DependentUpon>201705121517599_RemoveGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121524462_CreateGenreTable.resx">
+      <DependentUpon>201705121524462_CreateGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121526325_deleteGenreTable1.resx">
+      <DependentUpon>201705121526325_deleteGenreTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121527355_CreateGenreTable1.resx">
+      <DependentUpon>201705121527355_CreateGenreTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121529081_UpdateMoviesTable.resx">
+      <DependentUpon>201705121529081_UpdateMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121654463_ChangeDateTimePropertiesInMoviesTable.resx">
+      <DependentUpon>201705121654463_ChangeDateTimePropertiesInMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121800334_ChangeGenderIdOfMoviesModel.resx">
+      <DependentUpon>201705121800334_ChangeGenderIdOfMoviesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121926087_ChangeGenderIdOfMoviesModel2.resx">
+      <DependentUpon>201705121926087_ChangeGenderIdOfMoviesModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705121942218_ChangeGenderIdOfMoviesModel3.resx">
+      <DependentUpon>201705121942218_ChangeGenderIdOfMoviesModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705122016128_modifyGenderOfMovies.resx">
+      <DependentUpon>201705122016128_modifyGenderOfMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
