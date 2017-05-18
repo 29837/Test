@@ -67,14 +67,14 @@ namespace Vidly.Controllers
         //Get: movies
         public ActionResult Index()
         {
-            var movies = _context.Movies.Include(c => c.Gender).ToList();
+            var movies = _context.Movies.Include(c => c.Genre).ToList();
             return View(movies);
         }
 
         //Get: movies/details/{id}
         public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include(g => g.Gender).SingleOrDefault(m => m.Id == id);
+            var movie = _context.Movies.Include(g => g.Genre).SingleOrDefault(m => m.Id == id);
             if (movie == null)
                 return HttpNotFound("The movie was not found in the database");
             return View(movie);

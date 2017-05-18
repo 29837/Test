@@ -271,6 +271,10 @@
     <Compile Include="Migrations\201705122016128_modifyGenderOfMovies.Designer.cs">
       <DependentUpon>201705122016128_modifyGenderOfMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705151646569_updateMoviesModel.cs" />
+    <Compile Include="Migrations\201705151646569_updateMoviesModel.Designer.cs">
+      <DependentUpon>201705151646569_updateMoviesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -445,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705122016128_modifyGenderOfMovies.resx">
       <DependentUpon>201705122016128_modifyGenderOfMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705151646569_updateMoviesModel.resx">
+      <DependentUpon>201705151646569_updateMoviesModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

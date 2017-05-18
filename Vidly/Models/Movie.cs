@@ -8,11 +8,17 @@ namespace Vidly.Models
 {
     public class Movie
     {
+        public Movie()
+        {
+            //DateTime dt = new DateTime();
+            //ReleaseDate = dt;
+            //NumberInStock = 0;
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        [Display (Name =  "Date of Release")]
+        [Display(Name = "Release date")]
         public DateTime? ReleaseDate { get; set; }
 
         [Display(Name =  "Date of added")]
@@ -21,9 +27,9 @@ namespace Vidly.Models
         [Display(Name = "Number in Stock")]
         public int NumberInStock { get; set; }
         
-        public Genre Gender { get; set; }
+        public Genre Genre { get; set; }
 
-        [Display(Name = "Gender")]
+        [Display(Name = "Genre")]
         [Required]
         public int GenderId { get; set; }
 
